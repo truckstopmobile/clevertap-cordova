@@ -65,29 +65,11 @@
             <uses-permission android:name="android.permission.INTERNET" />
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
             <uses-permission android:name="android.permission.WAKE_LOCK" />
-			<permission
-				android:name="$PACKAGE_NAME.permission.C2D_MESSAGE"
-				android:protectionLevel="signature"/>
-			<uses-permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE"/>
-
-			<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
         </config-file>
 
 		<config-file target="AndroidManifest.xml" parent="/manifest/application">
 
             <meta-data android:name="GCM_SENDER_ID" android:value="id:$GCM_PROJECT_NUMBER" />
-
-            <receiver
-                android:name="com.google.android.gms.gcm.GcmReceiver"
-                android:exported="true"
-                android:permission="com.google.android.c2dm.permission.SEND" >
-                <intent-filter>
-                    <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                    <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-					<category android:name="$PACKAGE_NAME" />
-                </intent-filter>
-            </receiver>
-
             <service
                 android:name="com.clevertap.android.sdk.GcmMessageListenerService"
                 android:exported="false" >
@@ -118,7 +100,6 @@
         <source-file src="src/android/CleverTapAndroidSDK.jar" target-dir="libs/" />
         <source-file src="src/android/CleverTapPlugin.java" target-dir="src/com/clevertap/cordova/" />
 
-		<framework src="com.google.android.gms:play-services-gcm:9.0.2" />
-		<framework src="com.android.support:support-v4:+" />
+		<framework src="com.android.support:support-v4:24.1.1+" />
     </platform>
 </plugin>
